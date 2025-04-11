@@ -12,7 +12,7 @@ export default function About() {
       </p>
       <div className="flex items-center space-x-4 mt-6">
         <img 
-          src="https://via.placeholder.com/100" 
+          src="./san.jpeg" 
           alt="Aayush Khadka"
           className="w-24 h-24 rounded-full border-4 border-white shadow-lg"
         />

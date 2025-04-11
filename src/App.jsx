@@ -1,9 +1,10 @@
-// App.jsx
-// App.jsx
 import About from './components/About';
 import Projects from './components/Projects';
 import Skills from './components/Skills';
 import ProfileImage from './components/ProfileImage';
+import Contact from './components/Contact';
+import Achievements from './components/Achievements';
+ import Blog from './components/Blog';
 
 export default function App() {
   return (
@@ -20,8 +21,18 @@ export default function App() {
       <section className="max-w-6xl mx-auto bg-gradient-to-r from-indigo-500 via-purple-600 to-pink-500 text-white p-8 rounded-xl shadow-lg">
         <Skills />
       </section>
+
+      <section className="max-w-6xl mx-auto bg-gradient-to-r from-indigo-500 via-purple-600 to-pink-500 text-white p-8 rounded-xl shadow-lg">
+        <Achievements />
+      </section>
+
+      <section className="max-w-6xl mx-auto bg-gradient-to-r from-indigo-500 via-purple-600 to-pink-500 text-white p-8 rounded-xl shadow-lg">
+        <Contact />
+      </section>
+
+      <section className="max-w-6xl mx-auto bg-white p-8 rounded-xl shadow-lg">
+        <Blog />
+      </section> 
     </div>
   );
 }
-
-
