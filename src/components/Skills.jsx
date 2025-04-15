@@ -51,14 +51,17 @@ const techIcons = {
 export default function TechStack() {
   return (
     <div className="min-h-screen px-6 py-24 transition-colors duration-300">
-      <motion.h2
-        className="text-4xl md:text-6xl font-extrabold text-center mb-20 tracking-tight bg-gradient-to-r from-cyan-500 to-rose-500 dark:from-cyan-300 dark:to-rose-400 bg-clip-text text-transparent"
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-      >
-        My Tech Stack
-      </motion.h2>
+<motion.h2
+  className="text-3xl md:text-5xl font-extrabold text-center mb-20 tracking-tight"
+  initial={{ opacity: 0, scale: 0.8 }}
+  animate={{ opacity: 1, scale: 1 }}
+  transition={{ duration: 0.8, ease: "easeOut" }}
+>
+  <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-rose-500 dark:from-cyan-400 dark:to-rose-400">
+    My Tech Stack
+  </span>
+</motion.h2>
+
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
         {Object.entries(techStack).map(([category, items], index) => (
