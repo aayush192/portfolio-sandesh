@@ -45,44 +45,54 @@ const techIcons = {
   Git: <SiGit />,
   Firebase: <SiFirebase />,
   Postman: <SiPostman />,
+  "VS Code": "⚙️",
 };
 
 export default function TechStack() {
   return (
-    <div className="max-w-6xl mx-auto px-4 py-20">
+    <div className="min-h-screen px-6 py-24 transition-colors duration-300">
       <motion.h2
-        className="text-5xl font-bold text-center bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text mb-16"
-        initial={{ opacity: 0, y: -40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7 }}
+        className="text-4xl md:text-6xl font-extrabold text-center mb-20 tracking-tight bg-gradient-to-r from-cyan-500 to-rose-500 dark:from-cyan-300 dark:to-rose-400 bg-clip-text text-transparent"
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
       >
-        🚀 My Tech Stack
+        My Tech Stack
       </motion.h2>
 
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
         {Object.entries(techStack).map(([category, items], index) => (
           <motion.div
             key={category}
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: index * 0.15, duration: 0.6 }}
-            className="bg-white/10 backdrop-blur-lg rounded-3xl shadow-xl border border-white/10 p-6 hover:-translate-y-2 transform transition-all duration-300"
+            transition={{ duration: 0.6, delay: index * 0.2, ease: "easeOut" }}
+            whileHover={{ scale: 1.05, rotateX: 5, rotateY: 5 }}
+            className="relative rounded-2xl p-6 border shadow-lg transition-all duration-300 backdrop-blur-sm bg-white/80 border-gray-200/50 hover:shadow-[0_0_15px_rgba(0,0,0,0.1)] dark:bg-gray-800/50 dark:border-gray-700/50 dark:hover:shadow-[0_0_15px_rgba(0,255,255,0.3)]"
           >
-            <h3 className="text-2xl font-semibold text-white mb-4">
+            <div className="absolute inset-0 rounded-2xl opacity-0 hover:opacity-100 transition-opacity duration-300 bg-gradient-to-r from-blue-500/10 to-red-500/10 dark:from-cyan-500/10 dark:to-purple-500/10" />
+
+            <h3 className="text-2xl font-bold mb-5 relative z-10 text-blue-600 dark:text-cyan-300">
               {category}
             </h3>
-            <div className="flex flex-wrap gap-3">
+
+            <div className="grid grid-cols-2 gap-3 relative z-10">
               {items.map((item, i) => (
                 <motion.div
                   key={item}
-                  className="flex items-center gap-2 px-4 py-2 bg-white/20 rounded-full text-white text-sm font-medium backdrop-blur-md border border-white/20 hover:bg-white/30 transition-all"
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: i * 0.05 }}
+                  className="flex items-center gap-3 p-3 rounded-xl border transition-all duration-200 bg-gray-100/50 border-gray-300/30 hover:border-blue-400/50 hover:bg-blue-200/10 dark:bg-gray-900/40 dark:border-gray-600/30 dark:hover:border-cyan-400/50 dark:hover:bg-cyan-500/10"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.1, duration: 0.4 }}
+                  whileHover={{ scale: 1.1 }}
                 >
-                  <span className="text-lg">{techIcons[item] || "⚙️"}</span>
-                  {item}
+                  <span className="text-xl text-blue-500 dark:text-cyan-400">
+                    {techIcons[item]}
+                  </span>
+                  <span className="text-sm font-medium text-gray-700 dark:text-gray-200">
+                    {item}
+                  </span>
                 </motion.div>
               ))}
             </div>
