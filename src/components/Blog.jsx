@@ -15,7 +15,7 @@ export default function Blog() {
     <section className="relative py-20 bg-gradient-to-b from-gray-100 to-white dark:from-gray-900 dark:to-gray-800 transition-colors duration-300">
       <div className="max-w-5xl mx-auto px-4">
         <motion.h2
-          className="text-4xl md:text-5xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-pink-500 dark:from-indigo-400 dark:to-pink-400 mb-12"
+          className="text-4xl md:text-5xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-l from-cyan-500 to-rose-500 dark:from-cyan-500 dark:to-rose-800 mb-12"
           initial={{ opacity: 0, y: -50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
