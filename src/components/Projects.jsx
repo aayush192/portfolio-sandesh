@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FiGithub, FiExternalLink } from 'react-icons/fi';
 
@@ -28,7 +29,24 @@ const projects = [
   }
 ];
 
+
 export default function Projects() {
+  const [showAll, setShowAll] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768); // md breakpoint
+    };
+
+    handleResize(); // Initial check
+    window.addEventListener('resize', handleResize);
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const visibleProjects = isMobile && !showAll ? projects.slice(0, 1) : projects;
+
   return (
     <section id="projects" className="py-16 px-4 sm:px-6 lg:px-8">
       <motion.h2
@@ -37,7 +55,7 @@ export default function Projects() {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
       >
-       <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-rose-500">My Projects</span>
+        <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-rose-500">My Projects</span>
       </motion.h2>
 
       <motion.p 
@@ -51,10 +69,22 @@ export default function Projects() {
       </motion.p>
 
       <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto">
-        {projects.map((project, index) => (
+        {visibleProjects.map((project, index) => (
           <ProjectCard key={index} project={project} index={index} />
         ))}
       </div>
+
+      {/* Show More / Show Less button */}
+      {isMobile && (
+        <div className="flex justify-center mt-8">
+          <button
+            onClick={() => setShowAll(!showAll)}
+            className="px-6 py-2 bg-indigo-600 text-white rounded-full hover:bg-indigo-700 transition"
+          >
+            {showAll ? "Show Less" : "Show More"}
+          </button>
+        </div>
+      )}
     </section>
   );
 }
@@ -75,7 +105,7 @@ const ProjectCard = ({ project, index }) => (
         loading="lazy"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-        <div className="flex gap-3">
+        <div className="flex gap-3 flex-wrap">
           {project.tags.map((tag, i) => (
             <span 
               key={i}
