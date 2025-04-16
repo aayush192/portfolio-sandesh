@@ -103,7 +103,7 @@ export default function About() {
           >
             <div className="group relative rounded-2xl overflow-hidden shadow-lg border-2 border-cyan-100 dark:border-cyan-700 aspect-square">
               <img
-                src="./san.jpeg"
+                src="./sandsh.jpeg"
                 alt="Sandesh Khadka"
                 className="object-cover w-full h-full"
               />
