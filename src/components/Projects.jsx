@@ -4,29 +4,32 @@ import { FiGithub, FiExternalLink } from 'react-icons/fi';
 
 const projects = [
   {
-    title: "E-Commerce Platform",
-    description: "Full-stack e-commerce site with React, Node.js, and Stripe integration. Features product filtering, cart system, and user authentication.",
-    tags: ["React", "Node.js", "MongoDB", "Stripe"],
-    image: "https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
-    github: "#",
-    liveDemo: "#"
-  },
-  {
-    title: "Task Management App",
-    description: "Kanban-style task manager with drag-and-drop functionality. Supports team collaboration and real-time updates.",
-    tags: ["React", "Firebase", "Tailwind CSS"],
-    image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
-    github: "#",
-    liveDemo: "#"
-  },
-  {
-    title: "AI Image Generator",
-    description: "Web app that generates custom artwork using OpenAI's DALL-E API. Users can download and share creations.",
-    tags: ["Next.js", "OpenAI API", "Tailwind CSS"],
-    image: "https://images.unsplash.com/photo-1677442135136-760c813a743a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
-    github: "#",
-    liveDemo: "#"
+    "title": "Food App",
+    "description": "A food app that allows users to browse menus, place orders, and enjoy a seamless food delivery experience.",
+    "tags": ["Flutter", "Node.js", "MongoDB"],
+    "image": "./food-delivery.jpg",
+    "github": "https://github.com/sandeshkhadka283/Food-App-UI/tree/main",
+    "liveDemo": "#"
   }
+  ,
+  {
+    "title": "Restaurant Management System",
+    "description": "A platform to manage hotel billing processes, streamlining reservations, check-ins, check-outs, and invoice generation.",
+    "tags": ["Flutter", "Node.js", "MongoDB"],
+    "image": "./Hotel-Management-System.gif",
+    "github": "https://github.com/sandeshkhadka283/restapp",
+    "liveDemo": "#"
+  }
+  
+  ,{
+    "title": "GitHub Actions Flutter",
+    "description": "Set up GitHub Actions jobs to automate the building of APKs, run tests, and generate bundle files as output.",
+    "tags": ["Flutter", "GitHub Actions"],
+    "image": "./git-flutter.png",
+    "github": "https://github.com/sandeshkhadka283/githubactionsflutter-",
+    "liveDemo": "."
+  }
+  
 ];
 
 
@@ -73,7 +76,17 @@ export default function Projects() {
           <ProjectCard key={index} project={project} index={index} />
         ))}
       </div>
-
+      <div className="flex justify-center mt-6">
+             <a
+                href="https://github.com/sandeshkhadka283?tab=repositories" // 🔁 Replace with your actual GitHub URL
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-2 border border-indigo-600 text-indigo-600 hover:bg-indigo-600 hover:text-white transition rounded-full"
+            >
+             <FiGithub className="text-lg" />
+            View All Projects on GitHub
+              </a>
+            </div>
       {/* Show More / Show Less button */}
       {isMobile && (
         <div className="flex justify-center mt-8">

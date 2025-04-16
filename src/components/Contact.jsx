@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { FiSend, FiMail, FiUser, FiMessageSquare, FiPhone } from "react-icons/fi";
-import { FaGithub, FaLinkedin, FaTwitter, FaDiscord } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaDiscord } from "react-icons/fa";
 import { useForm, ValidationError } from '@formspree/react';
 
 export default function Contact() {
@@ -58,7 +58,7 @@ export default function Contact() {
                 <div>
                   <h4 className="text-base md:text-lg font-semibold text-gray-800 dark:text-white">Email Me</h4>
                   <a 
-                    href="mailto:you@example.com" 
+                    href="mailto:ksandesh283@gmail.com" 
                     className="text-cyan-600 dark:text-cyan-400 hover:text-cyan-800 dark:hover:text-cyan-300 transition-colors text-sm md:text-base"
                   >
                     ksandesh283@gmail.com
@@ -73,7 +73,7 @@ export default function Contact() {
                 <div>
                   <h4 className="text-base md:text-lg font-semibold text-gray-800 dark:text-white">Call Me</h4>
                   <a 
-                    href="tel:+1234567890" 
+                    href="tel:+9779861343700" 
                     className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors text-sm md:text-base"
                   >
                     +977 9861343700
@@ -83,13 +83,16 @@ export default function Contact() {
 
               <div className="flex items-start gap-3 md:gap-4">
                 <div className="p-2 md:p-3 rounded-xl bg-purple-100 dark:bg-purple-900/50 text-purple-600 dark:text-purple-300">
-                  <FaDiscord className="text-xl md:text-2xl" />
+                  <FaLinkedin className="text-xl md:text-2xl" />
                 </div>
                 <div>
-                  <h4 className="text-base md:text-lg font-semibold text-gray-800 dark:text-white">Discord</h4>
-                  <span className="text-purple-600 dark:text-purple-400 text-sm md:text-base">
-                    username#1234
-                  </span>
+                  <h4 className="text-base md:text-lg font-semibold text-gray-800 dark:text-white">Linkedin</h4>
+                  <a 
+                    href="https://www.linkedin.com/in/sandeshkhadka936/" 
+                    className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors text-sm md:text-base"
+                  >
+                    sandeshkhadka936
+                  </a>
                 </div>
               </div>
             </div>
@@ -115,14 +118,6 @@ export default function Contact() {
                   className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 p-2 md:p-3 rounded-xl bg-blue-100/50 dark:bg-blue-900/20"
                 >
                   <FaLinkedin size={20} className="md:w-6 md:h-6" />
-                </motion.a>
-                <motion.a 
-                  href="/" 
-                  aria-label="Twitter"
-                  whileHover={{ y: -3 }}
-                  className="text-sky-500 dark:text-sky-400 hover:text-sky-700 dark:hover:text-sky-300 p-2 md:p-3 rounded-xl bg-sky-100/50 dark:bg-sky-900/20"
-                >
-                  <FaTwitter size={20} className="md:w-6 md:h-6" />
                 </motion.a>
               </div>
             </div>

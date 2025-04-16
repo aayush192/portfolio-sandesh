@@ -44,7 +44,7 @@ export default function About() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1, duration: 0.5 }}
             >
-              I'm <span className="font-semibold text-indigo-600 dark:text-indigo-400">Sandesh Khadka</span>, a full-stack and app developer currently pursuing a <span className="font-semibold">BSc. CSIT</span>. I'm passionate about turning ideas into interactive, user-friendly products.
+            Hey there!  I'm <span className="font-semibold text-indigo-600 dark:text-indigo-400">Sandesh Khadka</span>,  a passionate full-stack and app developer with a <span className="font-semibold">BSc. CSIT</span> background.  I love crafting seamless digital experiences, whether it's a sleek mobile app or a powerful web application.
             </motion.p>
 
             {/* Extra Info */}
