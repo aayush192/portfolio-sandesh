@@ -2,8 +2,11 @@ import React from "react";
 import { motion } from "framer-motion";
 import { FiSend, FiMail, FiUser, FiMessageSquare, FiPhone } from "react-icons/fi";
 import { FaGithub, FaLinkedin, FaTwitter, FaDiscord } from "react-icons/fa";
+import { useForm, ValidationError } from '@formspree/react';
 
 export default function Contact() {
+  const [state, handleSubmit] = useForm("mqapoayo");
+
   return (
     <section id="contact" className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
       <div className="max-w-6xl mx-auto">
@@ -124,67 +127,74 @@ export default function Contact() {
               </div>
             </div>
           </div>
-
           {/* Contact Form - Always appears first on mobile */}
           <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 sm:p-8 md:p-10 border border-gray-200 dark:border-gray-700 order-1 lg:order-2">
-            <h3 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 dark:from-gray-100 dark:to-gray-300 text-transparent bg-clip-text mb-6 md:mb-8">
-              Send a Message
-            </h3>
-            
-            <form className="space-y-4 md:space-y-6">
-              <div className="space-y-4 md:space-y-6">
-                {/* Name Field */}
-                <div className="relative">
-                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <FiUser className="h-4 w-4 md:h-5 md:w-5 text-gray-400" />
-                  </div>
-                  <input
-                    type="text"
-                    required
-                    placeholder="Your Name"
-                    className="block w-full pl-10 pr-4 py-2 md:py-3 rounded-xl bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition text-sm md:text-base"
-                  />
-                </div>
+            {state.succeeded ? (<p className="text-green-500 text-lg font-medium text-center ">Thanks for your message. I’ll get back to you as soon as possible</p>):(
+              <>
+      <h3 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 dark:from-gray-100 dark:to-gray-300 text-transparent bg-clip-text mb-6 md:mb-8">
+        Send a Message
+      </h3>
 
-                {/* Email Field */}
-                <div className="relative">
-                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <FiMail className="h-4 w-4 md:h-5 md:w-5 text-gray-400" />
-                  </div>
-                  <input
-                    type="email"
-                    required
-                    placeholder="Your Email"
-                    className="block w-full pl-10 pr-4 py-2 md:py-3 rounded-xl bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition text-sm md:text-base"
-                  />
-                </div>
-
-                {/* Message Field */}
-                <div className="relative">
-                  <div className="absolute top-2 md:top-3 left-3">
-                    <FiMessageSquare className="h-4 w-4 md:h-5 md:w-5 text-gray-400" />
-                  </div>
-                  <textarea
-                    rows="4"
-                    required
-                    placeholder="Your Message"
-                    className="block w-full pl-10 pr-4 py-2 md:py-3 rounded-xl bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition text-sm md:text-base"
-                  ></textarea>
-                </div>
-              </div>
-
-              {/* Submit Button */}
-              <motion.button
-                type="submit"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="w-full flex justify-center items-center gap-2 md:gap-3 bg-gradient-to-r from-cyan-500 to-rose-400 hover:from-cyan-600 hover:to-rose-600 text-white font-medium md:font-semibold py-3 md:py-4 px-6 rounded-xl transition-all shadow-lg hover:shadow-xl active:shadow-md text-sm md:text-base"
-              >
-                <FiSend className="text-lg" />
-                <span>Send Message</span>
-              </motion.button>
-            </form>
+      <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
+        {/* Name Field */}
+        <div className="relative">
+          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+            <FiUser className="h-4 w-4 md:h-5 md:w-5 text-gray-400" />
           </div>
+          <input
+            type="text"
+            name="name"
+            required
+            placeholder="Your Name"
+            className="block w-full pl-10 pr-4 py-2 md:py-3 rounded-xl bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition text-sm md:text-base"
+          />
+        </div>
+
+        {/* Email Field */}
+        <div className="relative">
+          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+            <FiMail className="h-4 w-4 md:h-5 md:w-5 text-gray-400" />
+          </div>
+          <input
+            type="email"
+            name="email"
+            required
+            placeholder="Your Email"
+            className="block w-full pl-10 pr-4 py-2 md:py-3 rounded-xl bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition text-sm md:text-base"
+          />
+          <ValidationError prefix="Email" field="email" errors={state.errors} />
+        </div>
+
+        {/* Message Field */}
+        <div className="relative">
+          <div className="absolute top-2 md:top-3 left-3">
+            <FiMessageSquare className="h-4 w-4 md:h-5 md:w-5 text-gray-400" />
+          </div>
+          <textarea
+            name="message"
+            rows="4"
+            required
+            placeholder="Your Message"
+            className="block w-full pl-10 pr-4 py-2 md:py-3 rounded-xl bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition text-sm md:text-base"
+          ></textarea>
+          <ValidationError prefix="Message" field="message" errors={state.errors} />
+        </div>
+
+        {/* Submit Button */}
+        <motion.button
+          type="submit"
+          disabled={state.submitting}
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+          className="w-full flex justify-center items-center gap-2 md:gap-3 bg-gradient-to-r from-cyan-500 to-rose-400 hover:from-cyan-600 hover:to-rose-600 text-white font-medium md:font-semibold py-3 md:py-4 px-6 rounded-xl transition-all shadow-lg hover:shadow-xl active:shadow-md text-sm md:text-base"
+        >
+          <FiSend className="text-lg" />
+          <span>{state.submitting ? "Sending..." : "Send Message"}</span>
+        </motion.button>
+      </form>
+      </>
+           )}
+    </div>
         </motion.div>
       </div>
     </section>
