@@ -53,19 +53,16 @@ const techIcons = {
 export default function TechStack() {
   const [isMounted, setIsMounted] = useState(false);
 
-  // Ensures client-only rendering to prevent hydration mismatch
   useEffect(() => {
     setIsMounted(true);
   }, []);
-
-  if (!isMounted) return null;
 
   return (
     <div className="min-h-screen px-6 py-24 transition-colors duration-300">
       <motion.h2
         className="text-3xl md:text-5xl font-extrabold text-center mb-20 tracking-tight"
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
+        initial={isMounted ? { opacity: 0, scale: 0.8 } : false}
+        animate={isMounted ? { opacity: 1, scale: 1 } : false}
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
         <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-rose-500 dark:from-cyan-400 dark:to-rose-400">
@@ -77,58 +74,56 @@ export default function TechStack() {
         {Object.entries(techStack).map(([category, items], index) => (
           <motion.div
             key={category}
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            initial={isMounted ? { opacity: 0, y: 50 } : false}
+            animate={isMounted ? { opacity: 1, y: 0 } : false}
             transition={{
               duration: 0.6,
-              delay: index * 0.2,
+              delay: isMounted ? index * 0.2 : 0,
               ease: "easeOut",
             }}
             whileHover={{ scale: 1.05, rotateX: 5, rotateY: 5 }}
             className="relative rounded-2xl p-6 border shadow-lg transition-all duration-300 backdrop-blur-sm bg-white/80 border-gray-200/50 hover:shadow-[0_0_15px_rgba(0,0,0,0.1)] dark:bg-gray-800/50 dark:border-gray-700/50 dark:hover:shadow-[0_0_15px_rgba(0,255,255,0.3)]"
           >
             <div className="absolute inset-0 rounded-2xl opacity-0 hover:opacity-100 transition-opacity duration-300 bg-gradient-to-r from-blue-500/10 to-red-500/10 dark:from-cyan-500/10 dark:to-purple-500/10" />
+
             <h3 className="text-2xl font-bold mb-5 relative z-10 text-blue-600 dark:text-cyan-300">
               {category}
             </h3>
 
             <motion.div
-  className="grid grid-cols-2 gap-3 relative z-10"
-  initial="hidden"
-  whileInView="visible"
-  viewport={{ once: true }}
-  variants={{
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  }}
->
-  {items.map((item) => (
-    <motion.div
-      key={item}
-      className="flex items-center gap-3 p-3 rounded-xl border transition-all duration-200 bg-gray-100/50 border-gray-300/30 hover:border-blue-400/50 hover:bg-blue-200/10 dark:bg-gray-900/40 dark:border-gray-600/30 dark:hover:border-cyan-400/50 dark:hover:bg-cyan-500/10"
-      variants={{
-        hidden: { opacity: 0, x: -20 },
-        visible: { opacity: 1, x: 0 },
-      }}
-      whileHover={{ scale: 1.1 }}
-    >
-      <span className="text-xl text-blue-500 dark:text-cyan-400">
-        {techIcons[item] || <span className="text-red-400">❓</span>}
-      </span>
-      <span className="text-sm font-medium text-gray-700 dark:text-gray-200">
-        {item}
-      </span>
-    </motion.div>
-  ))}
-</motion.div>
-
+              className="grid grid-cols-2 gap-3 relative z-10"
+              initial="hidden"
+              animate="visible"
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  transition: {
+                    staggerChildren: 0.1,
+                  },
+                },
+              }}
+            >
+              {items.map((item) => (
+                <motion.div
+                  key={item}
+                  className="flex items-center gap-3 p-3 rounded-xl border transition-all duration-200 bg-gray-100/50 border-gray-300/30 hover:border-blue-400/50 hover:bg-blue-200/10 dark:bg-gray-900/40 dark:border-gray-600/30 dark:hover:border-cyan-400/50 dark:hover:bg-cyan-500/10"
+                  variants={{
+                    hidden: { opacity: 0, x: -20 },
+                    visible: { opacity: 1, x: 0 },
+                  }}
+                  whileHover={{ scale: 1.1 }}
+                >
+                  <span className="text-xl text-blue-500 dark:text-cyan-400">
+                    {techIcons[item] || <span className="text-red-400">❓</span>}
+                  </span>
+                  <span className="text-sm font-medium text-gray-700 dark:text-gray-200">
+                    {item}
+                  </span>
+                </motion.div>
+              ))}
+            </motion.div>
           </motion.div>
         ))}
       </div>
